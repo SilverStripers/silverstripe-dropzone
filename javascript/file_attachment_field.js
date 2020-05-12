@@ -140,16 +140,12 @@
         updateMaxFiles: function() {
             var _this = this;
             setTimeout(function() {
-                console.log('updateMaxFiles');
                 if (_this.backend) {
-                    console.log('updateMaxFiles 1');
                     var maxFiles = 0;
                     if (_this.settings.maxFiles) {
                         maxFiles = parseInt(_this.settings.maxFiles);
-                        console.log('updateMaxFiles 2 ' + maxFiles);
                     }
                     if (maxFiles) {
-                        console.log('updateMaxFiles 3 ' + (maxFiles - _this.getFileCount()), _this.backend);
                         _this.backend.options.maxFiles = maxFiles - _this.getFileCount();
                     }
                 }
