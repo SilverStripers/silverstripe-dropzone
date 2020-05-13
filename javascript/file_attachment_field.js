@@ -134,7 +134,7 @@
                     interval = setInterval(process, 500);
                 });
             });
-
+            _this.updateMaxFiles()
         },
 
         updateMaxFiles: function() {
