@@ -146,7 +146,7 @@
                         maxFiles = parseInt(_this.settings.maxFiles);
                     }
                     if (maxFiles) {
-                        _this.backend.options.maxFiles = maxFiles - _this.getFileCount();
+                        _this.backend.options.maxFiles = maxFiles;
                     }
                 }
             }, 200);
