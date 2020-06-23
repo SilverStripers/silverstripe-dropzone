@@ -65,14 +65,14 @@
                             _this.removeAttachedFiles();
                         }
                         _this.queueFile(file);
-                        _this.updateMaxFiles();
+                        // _this.updateMaxFiles();
                     })
 
                     .on('removedfile', function (file) {
                         if(droppedFile = _this.getFileByID(file.serverID)) {
                             droppedFile.destroy();
                         }
-                        _this.updateMaxFiles();
+                        // _this.updateMaxFiles();
                     })
 
                     .on('maxfilesexceeded', function(file) {
@@ -80,7 +80,7 @@
                             this.removeAllFiles();
                             this.addFile(file);
                         }
-                        _this.updateMaxFiles();
+                        // _this.updateMaxFiles();
                     })
 
                     .on('thumbnail', function (file) {
@@ -96,7 +96,7 @@
 
                     .on('success', function (file, response) {
                         _this.persistFile(file, response);
-                        _this.updateMaxFiles();
+                        // _this.updateMaxFiles();
                     })
 
                     .on('successmultiple', function (files, response) {
@@ -143,9 +143,9 @@
                 if (_this.backend) {
                     var maxFiles = 0;
                     if (_this.settings.maxFiles) {
-                        maxFiles = parseInt(_this.settings.maxFiles);
+                        maxFiles = parseInt(_this.settings.maxFiles)- _this.getFileCount();
                     }
-                    if (maxFiles) {
+                    if (maxFiles > 0) {
                         _this.backend.options.maxFiles = maxFiles;
                     }
                 }
@@ -153,7 +153,7 @@
         },
 
         getFileCount: function() {
-            return q('[data-attachments] li', this.node).length;
+            return q('[data-attachments] .dropzone-image', this.node).length + q('[data-attachments] .dz-success', this.node).length;
         },
 
         /**
