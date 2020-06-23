@@ -143,10 +143,10 @@
                 if (_this.backend) {
                     var maxFiles = 0;
                     if (_this.settings.maxFiles) {
-                        maxFiles = parseInt(_this.settings.maxFiles)- _this.getFileCount();
+                        maxFiles = parseInt(_this.settings.maxFiles);
                     }
-                    if (maxFiles > 0) {
-                        _this.backend.options.maxFiles = maxFiles;
+                    if (maxFiles) {
+                        _this.backend.options.maxFiles = maxFiles- _this.getFileCount();
                     }
                 }
             }, 200);
