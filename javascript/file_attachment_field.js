@@ -217,7 +217,7 @@
         removeAttachedFiles: function () {
             q('[data-attachments] li', this.node).forEach(function(n) {
                 if(n.getAttribute('data-id')) {
-                    n.parentNode.removeChild(n);
+                    // n.parentNode.removeChild(n);
                 }
             });
         },
